@@ -1,0 +1,12 @@
+CREATE TABLE document_signatures(
+    id CHAR(36) PRIMARY KEY,
+    document_id CHAR(36) NOT NULL,
+    user_id CHAR(36) NOT NULL,
+    position VARCHAR(255) NOT NULL,
+    is_signed BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP DEFAULT NULL,
+    FOREIGN KEY (document_id) REFERENCES documents(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);

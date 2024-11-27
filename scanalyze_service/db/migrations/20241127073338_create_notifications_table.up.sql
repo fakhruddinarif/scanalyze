@@ -1,0 +1,13 @@
+CREATE TABLE notifications(
+    id CHAR(36) PRIMARY KEY,
+    user_id CHAR(36) NOT NULL,
+    document_id CHAR(36) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    is_read BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP DEFAULT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (document_id) REFERENCES documents(id)
+);
